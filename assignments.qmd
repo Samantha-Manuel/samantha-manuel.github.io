@@ -1,0 +1,9 @@
+---
+title: "Assignments"
+---
+
+About this site
+
+```{r}
+1 + 1
+```
