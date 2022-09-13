@@ -17,7 +17,7 @@ website:
         text: CV
       - text: Assignments
         menu:
-          - assign01.pdf
+          - assign01.qmd
           - assign02.qmd
 
 format:
