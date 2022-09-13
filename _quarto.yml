@@ -1,0 +1,30 @@
+project:
+  type: website
+
+website:
+  title: "samantha-manuel.github.io"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: research.qmd
+        text: Research
+      - href: project.qmd
+        text: Project
+      - href: cv.pdf
+        text: CV
+      - text: Assignments
+        menu:
+          - assign01.pdf
+          - assign02.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+editor: visual
+
