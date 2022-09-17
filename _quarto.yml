@@ -15,7 +15,7 @@ website:
         text: Project
       - href: cv.pdf
         text: CV
-      - href: https://samantha-manuel.github.io/samantha-manuel.github.io-blog/
+      - href: "https://samantha-manuel.github.io/samantha-manuel.github.io-blog/"
         text: Blog
       - text: Assignments
         menu:
