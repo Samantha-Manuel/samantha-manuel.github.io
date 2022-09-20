@@ -228,7 +228,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="Murrell_scatterplot.jpeg" class="img-fluid figure-img"></p>
 </figure>
 </div>
-<p>Figure 2: Bird 131 Travel scatterplot with the cex value changed from 2 to 3.</p>
+<p>Figure 2: Bird 131 Travel scatterplot with the cex value changed from 2 to 3, as well as the “background color” of the white circles changed to grey circles.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Murrell_histogram.jpeg" class="img-fluid figure-img"></p>
@@ -436,7 +436,7 @@ The following object is masked from 'package:purrr':
 <div class="cell-output-display">
 <p><img src="assign02_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(mergedHPI2019<span class="sc">$</span>GDP_per_capita,mergedHPI2019<span class="sc">$</span>HPI), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">main=</span> <span class="st">"The Effect of GDP on HPI"</span>, <span class="at">xlab=</span> <span class="st">"GDP"</span>, <span class="at">ylab=</span> <span class="st">"HPI"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(mergedHPI2019<span class="sc">$</span>HPI, mergedHPI2019<span class="sc">$</span>GDP_per_capita), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">main=</span> <span class="st">"The Effect of GDP on HPI"</span>, <span class="at">xlab=</span> <span class="st">"GDP"</span>, <span class="at">ylab=</span> <span class="st">"HPI"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="assign02_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
 </div>
