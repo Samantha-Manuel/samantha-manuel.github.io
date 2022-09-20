@@ -21,6 +21,7 @@ website:
         menu:
           - assign01.qmd
           - assign02.qmd
+          - edwardtufte.qmd
 
 format:
   html:
