@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "research.html",
-    "href": "research.html",
-    "title": "Research",
+    "objectID": "assign03.html",
+    "href": "assign03.html",
+    "title": "EPPS 6356 Assignment 3",
     "section": "",
-    "text": "Research Projects will be posted here."
+    "text": "a. Compare the regression models\nb. Compare different ways to create the plots (e.g. changing colors, line types, plot characters)\n2.Can you finetune the charts without using other packages (consult RGraphics by Murrell)\n3.How about with ggplot2? (use tidyverse package)"
   },
   {
     "objectID": "assign02.html",
@@ -19,13 +19,6 @@
     "title": "Edward Tufte (2016): ‘The Future of Data Analysis’ Review",
     "section": "",
     "text": "Link to the Video- Edward Tufte (2016): The Future of Data Analysis\nWe were asked to watch the Microsoft Machine Learning & Data Science Summit 2016 Keynote Session by Dr Edward Tufte titled “The Future of Data Analysis”. The video is linked above. Below is my review and reflection on the video.\nI think that the “R” Community Lead, David Smith, had a very insightful comment. He said, “data is really more than just numbers; data is something we use to tell a story, and that we communicate that story to another person, and being able to communicate that story effectively is such an important part of what we do”. This really resonates with me, because it makes data science and data analyses so much more three-dimensional and robust. I had the misconception in how I perceive data collection and visualization as something stagnant and two-dimensional. However, this is not the case. Data visualization and analysis is meant to be something that can describe, explain, and predict phenomena that we observe in nature and society. It is such an essential skill to have as a scholar, critical thinker, and social scientist.\nAccording to Edward Tufte, data analysis is about “turning information into conclusions, analytical thinking is about assessing and evaluating relationship between information and conclusions”. The purpose of data visualization or data display is “assist reasoning about its content”. What does this mean? To me, data display is meant to help further explain or demonstrate the relationship between “information and conclusions”, such as causal mechanisms and models that attempt to describe, explain, and predict phenomena that we observe in nature and society.\nTufte asserts that the crisis in data analysis is that most published studies are false. He reiterates that the purpose of data analysis is to use empirical information to learn about the world, to describe and explain something, the find causes and effects, to advance our understanding, and to get it right; to learn and tell the truth”. However, Tufte refers to an article by John P. A. Ioannidis, which claims that upwards of 35 percent of published research findings are false due to the study power and bias. Tufte even refers to Lazer and colleagues (2014) article on the ‘Google Flu’ regarding the ‘Traps in Big Data Analysis’, i.e. the tendency of data analysts to overfit their data. The most concerning issue (to me) is that not only are original studies’ data analyses and conclusions unable to be replicated, but the replication studies are not able to be replicated, either. This is an alarming issue that questions the validity of data analyses in empirical studies.\nAccording to Tufte, human science is not rocket science; it is harder than rocket science. This is so true! Human beings and human behaviors are so dynamic and continuously changing. Therefore, data analysis within the social science field needs to be continuously advanced and developed, as well. So, what is the future of data analysis? Tufte asserts that the future of data analysis is to “take seriously the distinction between studies that are confirmatory of an idea that have not been hacked or worked over versus exploratory detective work”. He explains that this means that we must “not create findings out of the content, but out of the analysis”. We must ensure the quality of our data analysis within social science by remaining conscious, prudent, and adaptive. This way, we can produce data analysis and conclusions to the best of our abilities."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Samantha Manuel",
-    "section": "",
-    "text": "Projects and assignments will be posted here.\n\npar(family=\"Arial\")\nplot(iris, pch=20, cex=0.75, col=\"purple\")"
   },
   {
     "objectID": "assign01.html",
@@ -47,5 +40,12 @@
     "title": "Project",
     "section": "",
     "text": "1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Samantha Manuel",
+    "section": "",
+    "text": "Projects and assignments will be posted here.\n\npar(family=\"Arial\")\nplot(iris, pch=20, cex=0.75, col=\"purple\")"
   }
 ]

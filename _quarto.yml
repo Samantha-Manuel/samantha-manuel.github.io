@@ -9,19 +9,20 @@ website:
         text: Home
       - href: about.qmd
         text: About
-      - href: research.qmd
-        text: Research
       - href: project.qmd
         text: Project
       - href: cv.pdf
         text: CV
       - href: "https://samantha-manuel.github.io/samantha-manuel.github.io-blog/"
         text: Blog
+      - text: Critiques/Reviews
+        menu:
+          - edwardtufte.qmd
       - text: Assignments
         menu:
           - assign01.qmd
           - assign02.qmd
-          - edwardtufte.qmd
+          - assign03.qmd
 
 format:
   html:
