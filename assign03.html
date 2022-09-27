@@ -248,7 +248,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>Figure 4: Regression plot of X4 and Y4.</p>
-<p>Like Figure 2, a regression plot is most likely not the best tool for data analysis. This is because all of the plot points except for one are all at x=8. For this reason, different or supplementary data visualization/analysis tools are required.</p>
+<p>Like Figure 2, a regression plot is most likely not the best tool for data analysis for Figure 4. This is because all of the plot points except for one are all at x=8. For this reason, different or supplementary data visualization/analysis tools are required.</p>
 <p>b. Compare different ways to create the plots (e.g.&nbsp;changing colors, line types, plot characters).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -266,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Figure 6: Finetuned aggregate regression plots for X1-X4 and Y1-Y4.</p>
 <p>Above is Figure 6, which is the “finetuned” version of the regression plots for X1-X4 and Y1-Y4, using the RGraphics by Murrell. I changed the plot points to be smaller, so that the reader can more effectively read the charts and distinguish between the plot points. This is especially helpful for Plot 4, where many of the plot points are stacked on top of each other. Making the plot point sizes smaller also allows the reader to be able see the distance between plot points easier, as well. I also changed the color of the plot points and regression line to colors that are easier on the eye and less distracting.</p>
 <p>3.How about with ggplot2? (use tidyverse package)</p>
-<p>See the code below to see how the ggplot2 function (attached to the tidyverse package) can be used to efficiently generate the four regression plots for Anscombe’s (1973) Quartlet. The generated chart is also seen below in Figure 7.</p>
+<p>See the code below to see how the ggplot2 function (attached to the tidyverse package) can be used to efficiently generate the four regression plots for Anscombe’s (1973) Quartlet. The generated chart is also seen below in Figure 7. This aggregate/composite plot was produced by using only two lines of code, instead of 13+ lines of code the traditional way without the ggplot2 function within the tidyverse package.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/ggplothw3.jpeg" class="img-fluid figure-img"></p>
@@ -506,7 +506,7 @@ x4          0.4999091  0.1178189 4.243028 0.002164602</code></pre>
     }
     invisible()
 }
-&lt;bytecode: 0x7ff67f94a140&gt;
+&lt;bytecode: 0x7fa3bd6de540&gt;
 &lt;environment: namespace:graphics&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fl">0.1</span><span class="sc">+</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">oma =</span>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
