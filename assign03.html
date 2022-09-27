@@ -227,24 +227,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>Figure 1: Regression plot of X1 and Y1.</p>
+<p>As seen in Figure 1, a regression plot is appropriate for data visualization and analysis. The plot points generally fit the regression line. However, because the plot points are very spaced out, the R^2 value may be very small, as the regression line does not fit plot points very well.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/anscombex2y2.jpeg" class="img-fluid figure-img" width="365"></p>
 </figure>
 </div>
 <p>Figure 2: Regression plot of X2 and Y2.</p>
+<p>As seen in Figure 2, a regression plot is most likely not the best tool for data analysis. This is because all of the plot points resemble a parabolic function. For this reason, a different or supplementary data visualization/analysis tools may be required.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/anscombex3y3.jpeg" class="img-fluid figure-img" width="365"></p>
 </figure>
 </div>
 <p>Figure 3: Regression plot of X3 and Y3.</p>
+<p>Figure 3 is similar to Figure 1, in that a regression plot is appropriate for data visualization and analysis. The plot points generally fit the regression line, except for one outlier point at x=13. It may be beneficial to take this outlier out, and therefore visualize how much better the regression line would fit the data.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Images/anscombex4y4.jpeg" class="img-fluid figure-img" width="365"></p>
 </figure>
 </div>
 <p>Figure 4: Regression plot of X4 and Y4.</p>
+<p>Like Figure 2, a regression plot is most likely not the best tool for data analysis. This is because all of the plot points except for one are all at x=8. For this reason, different or supplementary data visualization/analysis tools are required.</p>
 <p>b. Compare different ways to create the plots (e.g.&nbsp;changing colors, line types, plot characters).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -252,6 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>Figure 5: Aggregate regression plots from X1-X4 and Y1-Y4.</p>
+<p>As seen in Figure 5, all four regression plots were generated as a composite chart by using the code to “plot for a loop”. This composite/aggregate chart also was about to generate a title to describe the plots. This code was also able to add further design components such as regression line color, as well as plot point size, color, and shape.</p>
 <p>2.Can you finetune the charts without using other packages (consult RGraphics by Murrell).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -268,7 +273,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </figure>
 </div>
 <p>Figure 7: Aggregate regression plots from X1-X4 and Y1-Y4 generated using the ggplot2 function.</p>
-<p>As seen in Figure 7,</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Anscombe (1973) Quartlet</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -502,7 +506,7 @@ x4          0.4999091  0.1178189 4.243028 0.002164602</code></pre>
     }
     invisible()
 }
-&lt;bytecode: 0x7f88674eff40&gt;
+&lt;bytecode: 0x7ff67f94a140&gt;
 &lt;environment: namespace:graphics&gt;</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>op <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fl">0.1</span><span class="sc">+</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">1</span>), <span class="at">oma =</span>  <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
