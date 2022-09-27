@@ -182,6 +182,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p><a href="https://youtu.be/9YTNYT1maa4">Link to the Video- Hadley Wickham (2019): Data Visualization and Data Science</a></p>
 <p>Name the technologies/techniques Wickham introduced. What are his main points? Summarize and comment.</p>
+<p>After watching this video, I was thoroughly impressed with the advancement of R Studio. Data visualization on R Studio would be so much more difficult and convoluted without the creation of the tidyverse package. This we have Hadley Wickham to thank for. Wickham is the creator of ggplot, ggplot2, and dplyr, tidyr, and purrr functions, all of which make up the package “tidyverse”. Below is a model that Wickham presented to visualize how different functions/packages are used in R Studio:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Images/wickham%20model.jpg" class="img-fluid figure-img" width="811"></p>
+</figure>
+</div>
+<p>I really appreciated Wickham’s relationship of his lecture to the infamous data set “gapminder”, which is a data set describing how countries’ incomes (GDP per capita), life expectancies, and populations changed over time. They also grouped the countries by region: the Americas, Europe, Asia, and Africa. Below is the code that he used to describe the components of ggplot2 code:</p>
+<p><img src="Images/wickhamcode.jpg" class="img-fluid" width="598"></p>
+<p>Wickham emphasizes the importance of learning the language of code, so that it will become easier to construct data visualization code in R Studio. He asserts that like linguistic languages, coding is also a language that needs to be deconstructed to become fluent. The code above therefore can be read as if it says, “Read the ‘gapminder’ dataset by filtering for just data from the year 2015, and create a new variable called ‘gapminder15’”.</p>
+<p>He continues to discuss the power of ‘orthogonal components’. According to Wickham (2019), orthogonal components refer to the orthogonality of a data set, or the separability of different features within a system. Wickharm asserts that we must look at data as a function, and therefore like a function, data has distinct components or variables within it. Orthogonality therefore highlights specific variables of interest or pertinence to visualize and analyze. In the ‘gapminder’ set, Wickham highlights the concept of orthogonality by generating a plot with income/GDP per capita (on the x axis) and life expectancy (on the y axis) by country and region using the tidyverse package. Below is the generated chart.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Images/wickhamworldplot.jpg" class="img-fluid figure-img" width="767"></p>
+</figure>
+</div>
+<p>To conclude, Wickham discusses the importance and the power of code. He highlights three main advantages to code: code is text, readable, and reproducible. Because code is text, it is able to be copied and pasted. Code is also a language, which means that other people can read it as well and possibly critique and even improve your code. Finally, code is reproducible, and allows you to rerun the code with updated or changed data easily and efficiently.</p>
+<p>All of these points that Wickham makes further emphasize how helpful coding is to visualize and subsequently analyze data, especially with the help of developed code functions and packages. For this, we really have Wickham to thank!</p>
 
 
 
