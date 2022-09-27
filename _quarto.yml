@@ -18,6 +18,7 @@ website:
       - text: Critiques/Reviews
         menu:
           - edwardtufte.qmd
+          - googleflu_wickham.qmd
       - text: Assignments
         menu:
           - assign01.qmd
