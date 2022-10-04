@@ -20,6 +20,7 @@ website:
           - edwardtufte.qmd
           - googleflu_wickham.qmd
           - comparison.qmd
+          - gapminder.qmd
       - text: Assignments
         menu:
           - assign01.qmd
