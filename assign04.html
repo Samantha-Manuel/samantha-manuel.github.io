@@ -168,6 +168,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="./googleflu_wickham.html">
  <span class="dropdown-text">‘Google Flu’ and Hadley Wickham’s EMBL Review</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./comparison.html">
+ <span class="dropdown-text">Review of Two Data Visualizations</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -223,7 +227,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>A designer is trained through repetitive practices and creating multiple works on the same object. This assignment follows that method and requests doing charts via a programming approach. Let's do a hackathon and generate charts in the next 24 hours. Generate a program to create a chart using either R Graphics or ggplot2 or any R packages (no other methods/software are allowed).</p>
+<p>A designer is trained through repetitive practices and creating multiple works on the same object. This assignment follows that method and requests doing charts via a programming approach. Let’s do a hackathon and generate charts in the next 24 hours. Generate a program to create a chart using either R Graphics or ggplot2 or any R packages (no other methods/software are allowed).</p>
 <p>The data set used aimed to observe the net domestic immigration rates (NDIR), which represents the net movement of people into and out of a state, over the period 1990-1994 divided by the population of the state. Alaska and Hawaii are excluded from the analysis because the environments of these states are significantly different from the other 48, and their locations present certain barriers to immigration. Eleven predictor variables thought to influence NDIR are defined in Table 1.4 below.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -264,15 +268,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>Figure 4: The Effect of Tax Brackets on NDIR by Region.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting up the new R environment, starting fresh, click run!</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting up the working directory, click run!</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/sami_manuel/Documents/Fall 2022/EPPS 6356/samantha-manuel.github.io"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading the file, click run!</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>HW4 <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"HW4data.txt"</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(HW4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting up the new R environment, starting fresh, click run! </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>(<span class="at">list=</span><span class="fu">ls</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>character(0)</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setting up the working directory, click run!</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/sami_manuel/Documents/Fall 2022/EPPS 6356/samantha-manuel.github.io"</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading the file, click run!</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>HW4 <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">"HW4data.txt"</span>) </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(HW4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        State   NDIR Unemp  Wage Crime Income Metrop Poor Taxes Educ BusFail
 1     Alabama  17.47   6.0 10.75   780  27196   67.4 16.4  1553 66.9    0.20
@@ -289,8 +295,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 5 43.43      West
 6 48.63 Northeast</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Turning on the packages required for HW4, click run!</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"Hmisc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Turning on the packages required for HW4, click run!</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"Hmisc"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: lattice</code></pre>
 </div>
@@ -312,7 +318,7 @@ Attaching package: 'Hmisc'</code></pre>
 
     format.pval, units</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching packages
 ───────────────────────────────────────
@@ -329,46 +335,45 @@ x dplyr::lag()       masks stats::lag()
 x dplyr::src()       masks Hmisc::src()
 x dplyr::summarize() masks Hmisc::summarize()</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identifying the mean of HW4 for later usage: mean= 10.88854, click run!</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(HW4<span class="sc">$</span>NDIR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Identifying the mean of HW4 for later usage: mean= 10.88854, click run!</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(HW4<span class="sc">$</span>NDIR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10.88854</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a new dummy variable, i.e. above 1 or below 0 mean, click run!</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>HW4<span class="sc">$</span>NDIR_dummy <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(HW4<span class="sc">$</span>NDIR<span class="sc">&gt;=</span><span class="fl">10.88854</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating taxes into an ordinal variable with 4 equally sized bins, click run!</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>HW4<span class="sc">$</span>tax_ord <span class="ot">&lt;-</span> <span class="fu">cut2</span>(HW4<span class="sc">$</span>Taxes, <span class="at">m=</span><span class="dv">12</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating cross tabulation, click run!</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(HW4<span class="sc">$</span>NDIR_dummy,HW4<span class="sc">$</span>tax_ord)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating a new dummy variable, i.e. above 1 or below 0 mean, click run!</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>HW4<span class="sc">$</span>NDIR_dummy <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(HW4<span class="sc">$</span>NDIR<span class="sc">&gt;=</span><span class="fl">10.88854</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating taxes into an ordinal variable with 4 equally sized bins, click run!</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>HW4<span class="sc">$</span>tax_ord <span class="ot">&lt;-</span> <span class="fu">cut2</span>(HW4<span class="sc">$</span>Taxes, <span class="at">m=</span><span class="dv">12</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating cross tabulation, click run!</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(HW4<span class="sc">$</span>NDIR_dummy,HW4<span class="sc">$</span>tax_ord)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   
     [1535,1853) [1853,2126) [2126,2371) [2371,3655]
   0           5           4           7          10
   1           7           8           5           2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating bar plot, click run!</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(HW4<span class="sc">$</span>NDIR_dummy,HW4<span class="sc">$</span>tax_ord), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">main=</span> <span class="st">"The Effect of Tax Brackets on NDIR"</span>, <span class="at">xlab=</span> <span class="st">"Tax Brackets"</span>, <span class="at">ylab=</span> <span class="st">"NDIR"</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating bar plot, click run!</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(HW4<span class="sc">$</span>NDIR_dummy,HW4<span class="sc">$</span>tax_ord), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">main=</span> <span class="st">"The Effect of Tax Brackets on NDIR"</span>, <span class="at">xlab=</span> <span class="st">"Tax Brackets"</span>, <span class="at">ylab=</span> <span class="st">"NDIR"</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="assign04_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(HW4<span class="sc">$</span>NDIR_dummy,HW4<span class="sc">$</span>Region), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">main=</span> <span class="st">"The Effect of Region on NDIR"</span>, <span class="at">xlab=</span> <span class="st">"Region"</span>, <span class="at">ylab=</span> <span class="st">"NDIR"</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(HW4<span class="sc">$</span>NDIR_dummy,HW4<span class="sc">$</span>Region), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">main=</span> <span class="st">"The Effect of Region on NDIR"</span>, <span class="at">xlab=</span> <span class="st">"Region"</span>, <span class="at">ylab=</span> <span class="st">"NDIR"</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="assign04_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(HW4<span class="sc">$</span>tax_ord,HW4<span class="sc">$</span>Region), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">main=</span> <span class="st">"The Effect of Region on Tax Brackets"</span>, <span class="at">xlab=</span> <span class="st">"Region"</span>, <span class="at">ylab=</span> <span class="st">"Tax Bracket Prevalence"</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(HW4<span class="sc">$</span>tax_ord,HW4<span class="sc">$</span>Region), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">main=</span> <span class="st">"The Effect of Region on Tax Brackets"</span>, <span class="at">xlab=</span> <span class="st">"Region"</span>, <span class="at">ylab=</span> <span class="st">"Tax Bracket Prevalence"</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="assign04_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Code for a Table with Embedded Charts</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(df,aes(z,x,fill=as.factor(y)),angle=45,size=16)+ geom_bar(position="dodge",stat="identity") +facet_wrap(~z,nrow=3)</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating Table with Embedded Charts, click run! </span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(HW4)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df,<span class="fu">aes</span>(tax_ord,NDIR,<span class="at">fill=</span><span class="fu">as.factor</span>(Region)),<span class="at">angle=</span><span class="dv">45</span>,<span class="at">size=</span><span class="dv">5</span>)<span class="sc">+</span> </span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">"dodge"</span>,<span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>tax_ord,<span class="at">nrow=</span><span class="dv">3</span>)</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"The Effect of Tax Brackets on NDIR by Region"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Tax Brackets"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"NDIR"</span>) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Region"</span>)) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Code for a Table with Embedded Charts</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#ggplot(df,aes(z,x,fill=as.factor(y)),angle=45,size=16)+ geom_bar(position="dodge",stat="identity") +facet_wrap(~z,nrow=3)</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Creating Table with Embedded Charts, click run!</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(HW4) </span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df,<span class="fu">aes</span>(tax_ord,NDIR,<span class="at">fill=</span><span class="fu">as.factor</span>(Region)), <span class="at">angle=</span><span class="dv">4</span>, <span class="at">size=</span><span class="dv">5</span>)<span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">"dodge"</span>,<span class="at">stat=</span><span class="st">"identity"</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>tax_ord,<span class="at">nrow=</span><span class="dv">3</span>) </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"The Effect of Tax Brackets on NDIR by Region"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Tax Brackets"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"NDIR"</span>) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">fill=</span><span class="fu">guide_legend</span>(<span class="at">title=</span><span class="st">"Region"</span>)) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="assign04_files/figure-html/unnamed-chunk-2-4.png" class="img-fluid" width="672"></p>
 </div>

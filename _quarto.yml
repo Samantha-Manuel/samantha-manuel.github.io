@@ -19,6 +19,7 @@ website:
         menu:
           - edwardtufte.qmd
           - googleflu_wickham.qmd
+          - comparison.qmd
       - text: Assignments
         menu:
           - assign01.qmd
