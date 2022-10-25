@@ -20,13 +20,16 @@ website:
           - edwardtufte.qmd
           - googleflu_wickham.qmd
           - comparison.qmd
-          - gapminder.qmd
+          - Malinowski.qmd
       - text: Assignments
         menu:
           - assign01.qmd
           - assign02.qmd
           - assign03.qmd
           - assign04.qmd
+          - assign05.qmd
+          - assign06.qmd
+          - assign02_6302.qmd
 
 format:
   html:
