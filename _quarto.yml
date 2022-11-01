@@ -29,7 +29,10 @@ website:
           - assign04.qmd
           - assign05.qmd
           - assign06.qmd
+          - assign07.qmd
           - assign02_6302.qmd
+          - assign03_6302.qmd
+          - assign04_6302.qmd
 
 format:
   html:

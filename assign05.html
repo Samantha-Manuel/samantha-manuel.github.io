@@ -209,6 +209,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <a class="dropdown-item" href="./assign02_6302.html">
  <span class="dropdown-text">EPPS 6302 Assignment 2</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./assign03_6302.html">
+ <span class="dropdown-text">EPPS 6302 Assignment 3</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assign04_6302.html">
+ <span class="dropdown-text">EPPS 6302 Assignment 4</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -258,52 +266,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Horizontal Bar Plot</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">table</span>(mtcars<span class="sc">$</span>gear)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(counts, <span class="at">main=</span><span class="st">"Car Distribution"</span>, <span class="at">horiz=</span><span class="cn">TRUE</span>, <span class="at">names.arg=</span><span class="fu">c</span>(<span class="st">"3 Gears"</span>, <span class="st">"4 Gears"</span>, <span class="st">"5 Gears"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>counts <span class="ot">&lt;-</span> <span class="fu">table</span>(mtcars<span class="sc">$</span>gear)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(counts, <span class="at">main=</span><span class="st">"Car Distribution"</span>, <span class="at">horiz=</span><span class="cn">TRUE</span>, <span class="at">names.arg=</span><span class="fu">c</span>(<span class="st">"3 Gears"</span>, <span class="st">"4 Gears"</span>, <span class="st">"5 Gears"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="assign05_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Column Chart</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> <span class="fu">tapply</span>(mtcars<span class="sc">$</span>hp, <span class="fu">list</span>(<span class="at">cylinders =</span> mtcars<span class="sc">$</span>cyl, <span class="at">transmission =</span> mtcars<span class="sc">$</span>am), <span class="at">FUN =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">10</span>))</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(summary_data, <span class="at">xlab =</span> <span class="st">"Transmission type"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Horsepower Mean"</span>,</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">3</span>),</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">rownames</span>(summary_data),</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Cylinders"</span>, <span class="at">x =</span> <span class="st">"topright"</span>,</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>                           <span class="at">inset =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.20</span>, <span class="dv">0</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Column Chart</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>summary_data <span class="ot">&lt;-</span> <span class="fu">tapply</span>(mtcars<span class="sc">$</span>hp, <span class="fu">list</span>(<span class="at">cylinders =</span> mtcars<span class="sc">$</span>cyl, <span class="at">transmission =</span> mtcars<span class="sc">$</span>am), <span class="at">FUN =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">10</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(summary_data, <span class="at">xlab =</span> <span class="st">"Transmission type"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Horsepower Mean"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">rainbow</span>(<span class="dv">3</span>),</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">beside =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">rownames</span>(summary_data),</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">title =</span> <span class="st">"Cylinders"</span>, <span class="at">x =</span> <span class="st">"topright"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>                           <span class="at">inset =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.20</span>, <span class="dv">0</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="assign05_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Radar Chart</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fmsb)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>exam_scores <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">"Student.1"</span>, <span class="st">"Student.2"</span>, <span class="st">"Student.3"</span>),</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">Biology =</span> <span class="fu">c</span>(<span class="fl">7.9</span>, <span class="fl">3.9</span>, <span class="fl">9.4</span>),</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">Physics =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">0</span>),</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">Maths =</span> <span class="fu">c</span>(<span class="fl">3.7</span>, <span class="fl">11.5</span>, <span class="fl">2.5</span>),</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">Sport =</span> <span class="fu">c</span>(<span class="fl">8.7</span>, <span class="dv">20</span>, <span class="dv">4</span>),</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">English =</span> <span class="fu">c</span>(<span class="fl">7.9</span>, <span class="fl">7.2</span>, <span class="fl">12.4</span>),</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Geography =</span> <span class="fu">c</span>(<span class="fl">6.4</span>, <span class="fl">10.5</span>, <span class="fl">6.5</span>),</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">Art =</span> <span class="fu">c</span>(<span class="fl">2.4</span>, <span class="fl">0.2</span>, <span class="fl">9.8</span>),</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Programming =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">20</span>),</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">Music =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">20</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the variable ranges: maximum and minimum</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>max_min <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Biology =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Physics =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Maths =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>),</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sport =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">English =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Geography =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>),</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">Art =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Programming =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Music =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(max_min) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Max"</span>, <span class="st">"Min"</span>)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind the variable ranges to the data</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(max_min, exam_scores)</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Radar Chart</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fmsb)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>exam_scores <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">row.names =</span> <span class="fu">c</span>(<span class="st">"Student.1"</span>, <span class="st">"Student.2"</span>, <span class="st">"Student.3"</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">Biology =</span> <span class="fu">c</span>(<span class="fl">7.9</span>, <span class="fl">3.9</span>, <span class="fl">9.4</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">Physics =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">0</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">Maths =</span> <span class="fu">c</span>(<span class="fl">3.7</span>, <span class="fl">11.5</span>, <span class="fl">2.5</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">Sport =</span> <span class="fu">c</span>(<span class="fl">8.7</span>, <span class="dv">20</span>, <span class="dv">4</span>),</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">English =</span> <span class="fu">c</span>(<span class="fl">7.9</span>, <span class="fl">7.2</span>, <span class="fl">12.4</span>),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">Geography =</span> <span class="fu">c</span>(<span class="fl">6.4</span>, <span class="fl">10.5</span>, <span class="fl">6.5</span>),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">Art =</span> <span class="fu">c</span>(<span class="fl">2.4</span>, <span class="fl">0.2</span>, <span class="fl">9.8</span>),</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">Programming =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">20</span>),</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">Music =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">20</span>, <span class="dv">20</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the variable ranges: maximum and minimum</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>max_min <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">Biology =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Physics =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Maths =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>),</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">Sport =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">English =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Geography =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">Art =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Programming =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>), <span class="at">Music =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">0</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(max_min) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Max"</span>, <span class="st">"Min"</span>)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Bind the variable ranges to the data</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">rbind</span>(max_min, exam_scores)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Biology Physics Maths Sport English Geography  Art Programming Music
 Max          20.0      20  20.0  20.0    20.0      20.0 20.0          20    20
@@ -312,9 +330,9 @@ Student.1     7.9      10   3.7   8.7     7.9       6.4  2.4           0    20
 Student.2     3.9      20  11.5  20.0     7.2      10.5  0.2           0    20
 Student.3     9.4       0   2.5   4.0    12.4       6.5  9.8          20    20</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating radar chart</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>student1_data <span class="ot">&lt;-</span> df2[<span class="fu">c</span>(<span class="st">"Max"</span>, <span class="st">"Min"</span>, <span class="st">"Student.1"</span>), ]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">radarchart</span>(student1_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generating radar chart</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>student1_data <span class="ot">&lt;-</span> df2[<span class="fu">c</span>(<span class="st">"Max"</span>, <span class="st">"Min"</span>, <span class="st">"Student.1"</span>), ]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">radarchart</span>(student1_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="assign05_files/figure-html/unnamed-chunk-2-3.png" class="img-fluid" width="672"></p>
 </div>
