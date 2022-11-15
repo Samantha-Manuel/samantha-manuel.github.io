@@ -20,6 +20,69 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -147,6 +210,10 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">EPPS 6356 Assignment 7</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="./assign09.html">
+ <span class="dropdown-text">EPPS 6356 Assignment 9</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./assign02_6302.html">
  <span class="dropdown-text">EPPS 6302 Assignment 2</span></a>
   </li>  
@@ -208,11 +275,179 @@ ul.task-list li input[type="checkbox"] {
 <p>a. Joe Biden’s tweets</p>
 <p>b. Tweet data about</p>
 <p>i. PLA</p>
-<p>ii. BLM, Black Live Matter</p>
+<p>ii. BLM, Black Lives Matter</p>
 <p>iii. Trade war</p></li>
 </ol>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Methods: Social media (Twitter) data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample program for using rtweet, sentiment analysis</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use vignette("auth", package = "rtweet") for authentication</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Documentation: vignette("intro", package = "rtweet")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub: https://github.com/mkearney/rtweet</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [Bob Rudis 21 Recipes for Mining Twitter Data with rtweet](https://rud.is/books/21-recipes/)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rtweet)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ tibble  3.1.6     ✔ dplyr   1.0.8
+✔ tidyr   1.2.0     ✔ stringr 1.4.0
+✔ readr   2.1.1     ✔ forcats 0.5.1
+✔ purrr   0.3.4     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter()  masks stats::filter()
+✖ purrr::flatten() masks rtweet::flatten()
+✖ dplyr::lag()     masks stats::lag()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up authentication using own Twitter account</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># will save credentials to local drive as default.rds</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">auth_setup_default</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Using default authentication available.
+Reading auth from '/Users/sami_manuel/Library/Preferences/org.R-project.R/R/rtweet/default.rds'</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## search for 1000 tweets of "Joe Biden" in English</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>jbt <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="at">q =</span> <span class="st">"JoeBiden"</span>, <span class="at">n =</span> <span class="dv">500</span>, <span class="at">lang =</span> <span class="st">"en"</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get Joe Biden's most recent tweets </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>JBT <span class="ot">=</span> <span class="fu">get_timelines</span>(<span class="st">"JoeBiden"</span>, <span class="at">n =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `get_timelines()` was deprecated in rtweet 1.0.0.
+ℹ Please use `get_timeline()` instead.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## preview users data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">users_data</span>(JBT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 500 × 23
+       id id_str name      screen_name location  description    url    protected
+    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;  &lt;lgl&gt;    
+ 1 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+ 2 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+ 3 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+ 4 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+ 5 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+ 6 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+ 7 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+ 8 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+ 9 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+10 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
+# … with 490 more rows, and 15 more variables: followers_count &lt;int&gt;,
+#   friends_count &lt;int&gt;, listed_count &lt;int&gt;, created_at &lt;chr&gt;,
+#   favourites_count &lt;int&gt;, verified &lt;lgl&gt;, statuses_count &lt;int&gt;,
+#   profile_image_url_https &lt;chr&gt;, profile_banner_url &lt;chr&gt;,
+#   default_profile &lt;lgl&gt;, default_profile_image &lt;lgl&gt;,
+#   withheld_in_countries &lt;list&gt;, derived &lt;chr&gt;, withheld_scope &lt;lgl&gt;,
+#   entities &lt;list&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Boolean search for large quantity of tweets (which could take a while)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>jbt2 <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="st">"JoeBiden"</span>, <span class="at">n =</span> <span class="dv">5000</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(jbt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 43
+  created_at               id id_str   full_text      truncated display_text_ra…
+  &lt;dttm&gt;                &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;lgl&gt;                &lt;dbl&gt;
+1 2022-11-13 09:47:56 1.59e18 1591820… "In '20, @Joe… FALSE                  284
+2 2022-11-14 20:20:28 1.59e18 1592341… "PM @narendra… FALSE                   81
+3 2022-11-14 16:45:02 1.59e18 1592287… "In this year… FALSE                  276
+4 2022-11-14 21:36:25 1.59e18 1592360… "@JoeBiden So… FALSE                   17
+5 2022-11-14 21:36:25 1.59e18 1592360… "RT @PMOIndia… FALSE                  119
+6 2022-11-14 21:36:24 1.59e18 1592360… "The meeting … FALSE                  221
+# … with 37 more variables: entities &lt;list&gt;, metadata &lt;list&gt;, source &lt;chr&gt;,
+#   in_reply_to_status_id &lt;dbl&gt;, in_reply_to_status_id_str &lt;chr&gt;,
+#   in_reply_to_user_id &lt;dbl&gt;, in_reply_to_user_id_str &lt;chr&gt;,
+#   in_reply_to_screen_name &lt;chr&gt;, geo &lt;list&gt;, coordinates &lt;list&gt;,
+#   place &lt;list&gt;, contributors &lt;lgl&gt;, is_quote_status &lt;lgl&gt;,
+#   retweet_count &lt;int&gt;, favorite_count &lt;int&gt;, favorited &lt;lgl&gt;,
+#   retweeted &lt;lgl&gt;, lang &lt;chr&gt;, possibly_sensitive &lt;lgl&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#i. Most likes</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt2<span class="sc">$</span>favorite_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 41161</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ii. Most Retweets</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt2<span class="sc">$</span>retweet_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 27143</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## plot time series of tweets frequency</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_plot</span>(jbt2, <span class="at">by =</span> <span class="st">"mins"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="assign03_6302_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(biden_rt <span class="ot">&lt;-</span> <span class="fu">search_tweets</span>(<span class="st">"#joebiden"</span>, <span class="at">n=</span><span class="dv">300</span>)) <span class="co"># pull 300 tweets that used the "#joebiden" hashtag</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 300 × 43
+   created_at               id id_str  full_text      truncated display_text_ra…
+   &lt;dttm&gt;                &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;lgl&gt;                &lt;dbl&gt;
+ 1 2022-11-14 07:04:35 1.59e18 159214… "“esteem in w… FALSE                  274
+ 2 2022-11-14 15:46:21 1.59e18 159227… "Nothing to s… FALSE                   46
+ 3 2022-11-14 04:39:00 1.59e18 159210… "No masks and… FALSE                  245
+ 4 2022-11-14 21:37:52 1.59e18 159236… "G-20 Summit … FALSE                  232
+ 5 2022-11-14 21:37:41 1.59e18 159236… "जी-20 शिखर स… FALSE                  261
+ 6 2022-11-14 21:37:35 1.59e18 159236… "#WATCH | US … FALSE                  114
+ 7 2022-11-14 21:37:22 1.59e18 159236… "RT @ZeeNews:… FALSE                  109
+ 8 2022-11-14 21:37:20 1.59e18 159236… "RT @TV9Bhara… FALSE                  140
+ 9 2022-11-14 21:37:04 1.59e18 159236… "RT @GordonGC… FALSE                  140
+10 2022-11-14 21:36:06 1.59e18 159236… "G-20 सम्मेलन में… FALSE                  191
+# … with 290 more rows, and 37 more variables: entities &lt;list&gt;,
+#   metadata &lt;list&gt;, source &lt;chr&gt;, in_reply_to_status_id &lt;dbl&gt;,
+#   in_reply_to_status_id_str &lt;chr&gt;, in_reply_to_user_id &lt;dbl&gt;,
+#   in_reply_to_user_id_str &lt;chr&gt;, in_reply_to_screen_name &lt;chr&gt;, geo &lt;list&gt;,
+#   coordinates &lt;list&gt;, place &lt;list&gt;, contributors &lt;lgl&gt;,
+#   is_quote_status &lt;lgl&gt;, retweet_count &lt;int&gt;, favorite_count &lt;int&gt;,
+#   favorited &lt;lgl&gt;, retweeted &lt;lgl&gt;, lang &lt;chr&gt;, quoted_status_id &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(biden_rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 300
+Columns: 43
+$ created_at                    &lt;dttm&gt; 2022-11-14 07:04:35, 2022-11-14 15:46:2…
+$ id                            &lt;dbl&gt; 1.592141e+18, 1.592273e+18, 1.592105e+18…
+$ id_str                        &lt;chr&gt; "1592141444458110979", "1592272752047980…
+$ full_text                     &lt;chr&gt; "“esteem in which Australia is now held.…
+$ truncated                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
+$ display_text_range            &lt;dbl&gt; 274, 46, 245, 232, 261, 114, 109, 140, 1…
+$ entities                      &lt;list&gt; [[&lt;data.frame[2 x 2]&gt;], [&lt;data.frame[1 …
+$ metadata                      &lt;list&gt; [&lt;data.frame[1 x 2]&gt;], [&lt;data.frame[1 x…
+$ source                        &lt;chr&gt; "&lt;a href=\"http://twitter.com/download/i…
+$ in_reply_to_status_id         &lt;dbl&gt; 1.592141e+18, NA, NA, NA, NA, NA, NA, NA…
+$ in_reply_to_status_id_str     &lt;chr&gt; "1592140720831614977", NA, NA, NA, NA, N…
+$ in_reply_to_user_id           &lt;dbl&gt; 18965916, NA, NA, NA, NA, NA, NA, NA, NA…
+$ in_reply_to_user_id_str       &lt;chr&gt; "18965916", NA, NA, NA, NA, NA, NA, NA, …
+$ in_reply_to_screen_name       &lt;chr&gt; "hughriminton", NA, NA, NA, NA, NA, NA, …
+$ geo                           &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+$ coordinates                   &lt;list&gt; [&lt;data.frame[1 x 3]&gt;], [&lt;data.frame[1 x…
+$ place                         &lt;list&gt; [&lt;data.frame[1 x 3]&gt;], [&lt;data.frame[1 x…
+$ contributors                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ is_quote_status               &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, FALSE, FALSE,…
+$ retweet_count                 &lt;int&gt; 82, 80, 49, 0, 0, 0, 25, 2, 852, 0, 1, 2…
+$ favorite_count                &lt;int&gt; 601, 169, 199, 0, 0, 0, 0, 0, 0, 2, 0, 0…
+$ favorited                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
+$ retweeted                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
+$ lang                          &lt;chr&gt; "en", "en", "en", "hi", "hi", "en", "hi"…
+$ quoted_status_id              &lt;dbl&gt; NA, 1.591625e+18, NA, NA, NA, NA, NA, NA…
+$ quoted_status_id_str          &lt;chr&gt; NA, "1591625254044041224", NA, NA, NA, N…
+$ quoted_status                 &lt;list&gt; [&lt;data.frame[1 x 27]&gt;], [&lt;data.frame[1 …
+$ possibly_sensitive            &lt;lgl&gt; NA, FALSE, FALSE, FALSE, FALSE, FALSE, F…
+$ retweeted_status              &lt;list&gt; [&lt;data.frame[1 x 30]&gt;], [&lt;data.frame[1 …
+$ text                          &lt;chr&gt; "“esteem in which Australia is now held.…
+$ favorited_by                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ scopes                        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ display_text_width            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ quoted_status_permalink       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ quote_count                   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ timestamp_ms                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ reply_count                   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ filter_level                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ query                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ withheld_scope                &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ withheld_copyright            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ withheld_in_countries         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ possibly_sensitive_appealable &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
+</div>
 </div>
 
 

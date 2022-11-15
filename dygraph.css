@@ -1,0 +1,13 @@
+.dygraph-title {
+  color: black;
+  font-weight: bold;
+  font-family: "Palatino", serif;
+}
+.dygraph-axis-label {
+  font-size: 12px;
+  font-family: "Palatino", serif;
+}
+.dygraph-legend {
+  font-size: 9px;  
+  font-family: "Palatino", serif;
+}
