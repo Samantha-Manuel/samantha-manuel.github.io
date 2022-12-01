@@ -214,6 +214,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  <span class="dropdown-text">EPPS 6356 Assignment 9</span></a>
   </li>  
         <li>
+    <a class="dropdown-item" href="./assign10.html">
+ <span class="dropdown-text">EPPS 6356 Assignment 10</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="./assign02_6302.html">
  <span class="dropdown-text">EPPS 6302 Assignment 2</span></a>
   </li>  
@@ -224,6 +228,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <li>
     <a class="dropdown-item" href="./assign04_6302.html">
  <span class="dropdown-text">EPPS 6302 Assignment 4</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assign05_6302.html">
+ <span class="dropdown-text">EPPS 6302 Assignment 5</span></a>
   </li>  
     </ul>
   </li>
@@ -264,189 +272,269 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>a. Use your developer account to extract Joe Biden’s tweets in last three months</p>
 <p>b. Analyze the tweet data:</p>
 <p>i. Most likes</p>
+<p>At the time of doing this assignment, the most likes were 6115.</p>
 <p>ii. Most retweets</p>
-<p>iii. Most replied</p>
-<p>iv. What are the hashtags in above messages</p></li>
+<p>At the time of doing this assignment, the most likes were 38904.</p>
+<p>iii. What are the hashtags in above messages</p>
+<p>[1] “#joebiden” “#ethiopia” “#tigraygenocide”</p>
+<p>[4] “#rrbntpc5432levelresult” “#mahsaamini” “#tigray”</p>
+<p>[7] “#g20indonesia” “#m7novmassacreug” “#2yrstigraygenocide”</p>
+<p>[10] “#کیان_پیرفلک”</p></li>
 <li><p>Collect a bag of hashtags for the following topics:</p>
 <p>i. Black Lives Matter</p>
-<p>ii. PLA Taiwani</p>
-<p>ii. COVID vaccines</p></li>
-<li><p>Use the non-API method to download Twitter data from</p>
-<p>a. Joe Biden’s tweets</p>
-<p>b. Tweet data about</p>
-<p>i. PLA</p>
-<p>ii. BLM, Black Lives Matter</p>
-<p>iii. Trade war</p></li>
+<pre><code>[1] "#bnwo"                    "#nfts"                  "#blm"            
+ [4] "#dailyapology"            "#blacklivesmatter"     "#blackbritishlivesmatter"
+ [7] "#blacked"                 "#bbc"                  "#tiktok"                 
+[10] "#black_lives_matter" </code></pre>
+<p>ii. PLA Taiwan</p>
+<p>[1] “#taiwan”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“#pla”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“#china”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+[4] “#usa”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“#beijing”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“#taipei”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+[7] “#xijinping”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“#rocaf”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“#socialist”&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+[10] “#new_taipei_city”</p>
+<p>iii. COVID vaccines</p>
+<pre><code>[1] "#covid-infected" "#covid"          "#longcovid"      "#covid19"       
+ [5] "#masks"          "#ccp"            "#tory"           "#doctoroffice"  
+ [9] "#vaccines"       "#familycare"</code></pre></li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Methods: Social media (Twitter) data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample program for using rtweet, sentiment analysis</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use vignette("auth", package = "rtweet") for authentication</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Documentation: vignette("intro", package = "rtweet")</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub: https://github.com/mkearney/rtweet</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [Bob Rudis 21 Recipes for Mining Twitter Data with rtweet](https://rud.is/books/21-recipes/)</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rtweet)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Methods: Social media (Twitter) data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample program for using rtweet, sentiment analysis</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use vignette("auth", package = "rtweet") for authentication</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Documentation: vignette("intro", package = "rtweet")</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub: https://github.com/mkearney/rtweet</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># [Bob Rudis 21 Recipes for Mining Twitter Data with rtweet](https://rud.is/books/21-recipes/)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>())</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rtweet)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ tibble  3.1.6     ✔ dplyr   1.0.8
-✔ tidyr   1.2.0     ✔ stringr 1.4.0
-✔ readr   2.1.1     ✔ forcats 0.5.1
-✔ purrr   0.3.4     
+✔ tibble  3.1.6      ✔ dplyr   1.0.10
+✔ tidyr   1.2.0      ✔ stringr 1.4.0 
+✔ readr   2.1.1      ✔ forcats 0.5.1 
+✔ purrr   0.3.4      
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter()  masks stats::filter()
 ✖ purrr::flatten() masks rtweet::flatten()
 ✖ dplyr::lag()     masks stats::lag()</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up authentication using own Twitter account</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># will save credentials to local drive as default.rds</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">auth_setup_default</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in .recacheSubclasses(def@className, def, env): undefined subclass
+"packedMatrix" of class "mMatrix"; definition not updated</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in .recacheSubclasses(def@className, def, env): undefined subclass
+"packedMatrix" of class "replValueSp"; definition not updated</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Package version: 3.2.3
+Unicode version: 14.0
+ICU version: 70.1
+Parallel computing: 8 of 8 threads used.
+See https://quanteda.io for tutorials and examples.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textmodels)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quanteda.textplots)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up authentication using own Twitter account</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># will save credentials to local drive as default.rds</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.setenv</span>(<span class="at">TWITTER_BEARER =</span> <span class="st">"AAAAAAAAAAAAAAAAAAAAAMsxhAEAAAAAzBUGoUHZtZp5Ax2OtJaAObG4rec%3DLGMtinMdRqtP9xU5NjFY3KVhZAyXM160sEyTbP5YTZr4T3MT0m"</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">`</span><span class="at">user.fields</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'description'</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>               <span class="st">`</span><span class="at">expansions</span><span class="st">`</span> <span class="ot">=</span> <span class="st">'pinned_tweet_id'</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">auth_setup_default</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Using default authentication available.
 Reading auth from '/Users/sami_manuel/Library/Preferences/org.R-project.R/R/rtweet/default.rds'</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## search for 1000 tweets of "Joe Biden" in English</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>jbt <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="at">q =</span> <span class="st">"JoeBiden"</span>, <span class="at">n =</span> <span class="dv">500</span>, <span class="at">lang =</span> <span class="st">"en"</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Get Joe Biden's most recent tweets </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>JBT <span class="ot">=</span> <span class="fu">get_timelines</span>(<span class="st">"JoeBiden"</span>, <span class="at">n =</span> <span class="dv">500</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: `get_timelines()` was deprecated in rtweet 1.0.0.
-ℹ Please use `get_timeline()` instead.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## preview users data</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">users_data</span>(JBT)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">## search for 500 tweets of "Joe Biden" in English</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>jbt <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="at">q =</span> <span class="st">"JoeBiden"</span>, <span class="at">n =</span> <span class="dv">500</span>, <span class="at">lang =</span> <span class="st">"en"</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#i. Most likes</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt<span class="sc">$</span>favorite_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 500 × 23
-       id id_str name      screen_name location  description    url    protected
-    &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;          &lt;chr&gt;  &lt;lgl&gt;    
- 1 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
- 2 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
- 3 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
- 4 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
- 5 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
- 6 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
- 7 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
- 8 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
- 9 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
-10 939091 939091 Joe Biden JoeBiden    Washingt… Husband to @D… https… FALSE    
-# … with 490 more rows, and 15 more variables: followers_count &lt;int&gt;,
-#   friends_count &lt;int&gt;, listed_count &lt;int&gt;, created_at &lt;chr&gt;,
-#   favourites_count &lt;int&gt;, verified &lt;lgl&gt;, statuses_count &lt;int&gt;,
-#   profile_image_url_https &lt;chr&gt;, profile_banner_url &lt;chr&gt;,
-#   default_profile &lt;lgl&gt;, default_profile_image &lt;lgl&gt;,
-#   withheld_in_countries &lt;list&gt;, derived &lt;chr&gt;, withheld_scope &lt;lgl&gt;,
-#   entities &lt;list&gt;</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Boolean search for large quantity of tweets (which could take a while)</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>jbt2 <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="st">"JoeBiden"</span>, <span class="at">n =</span> <span class="dv">5000</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(jbt2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 43
-  created_at               id id_str   full_text      truncated display_text_ra…
-  &lt;dttm&gt;                &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;          &lt;lgl&gt;                &lt;dbl&gt;
-1 2022-11-13 09:47:56 1.59e18 1591820… "In '20, @Joe… FALSE                  284
-2 2022-11-14 20:20:28 1.59e18 1592341… "PM @narendra… FALSE                   81
-3 2022-11-14 16:45:02 1.59e18 1592287… "In this year… FALSE                  276
-4 2022-11-14 21:36:25 1.59e18 1592360… "@JoeBiden So… FALSE                   17
-5 2022-11-14 21:36:25 1.59e18 1592360… "RT @PMOIndia… FALSE                  119
-6 2022-11-14 21:36:24 1.59e18 1592360… "The meeting … FALSE                  221
-# … with 37 more variables: entities &lt;list&gt;, metadata &lt;list&gt;, source &lt;chr&gt;,
-#   in_reply_to_status_id &lt;dbl&gt;, in_reply_to_status_id_str &lt;chr&gt;,
-#   in_reply_to_user_id &lt;dbl&gt;, in_reply_to_user_id_str &lt;chr&gt;,
-#   in_reply_to_screen_name &lt;chr&gt;, geo &lt;list&gt;, coordinates &lt;list&gt;,
-#   place &lt;list&gt;, contributors &lt;lgl&gt;, is_quote_status &lt;lgl&gt;,
-#   retweet_count &lt;int&gt;, favorite_count &lt;int&gt;, favorited &lt;lgl&gt;,
-#   retweeted &lt;lgl&gt;, lang &lt;chr&gt;, possibly_sensitive &lt;lgl&gt;, …</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#i. Most likes</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt2<span class="sc">$</span>favorite_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 41161</code></pre>
+<pre><code>[1] 20239</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ii. Most Retweets</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt2<span class="sc">$</span>retweet_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt<span class="sc">$</span>retweet_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 27143</code></pre>
+<pre><code>[1] 4992</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## plot time series of tweets frequency</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ts_plot</span>(jbt2, <span class="at">by =</span> <span class="st">"mins"</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<p><img src="assign03_6302_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(biden_rt <span class="ot">&lt;-</span> <span class="fu">search_tweets</span>(<span class="st">"#joebiden"</span>, <span class="at">n=</span><span class="dv">300</span>)) <span class="co"># pull 300 tweets that used the "#joebiden" hashtag</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ii. Most Replies</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt<span class="sc">$</span>reply_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 300 × 43
-   created_at               id id_str  full_text      truncated display_text_ra…
-   &lt;dttm&gt;                &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;          &lt;lgl&gt;                &lt;dbl&gt;
- 1 2022-11-14 07:04:35 1.59e18 159214… "“esteem in w… FALSE                  274
- 2 2022-11-14 15:46:21 1.59e18 159227… "Nothing to s… FALSE                   46
- 3 2022-11-14 04:39:00 1.59e18 159210… "No masks and… FALSE                  245
- 4 2022-11-14 21:37:52 1.59e18 159236… "G-20 Summit … FALSE                  232
- 5 2022-11-14 21:37:41 1.59e18 159236… "जी-20 शिखर स… FALSE                  261
- 6 2022-11-14 21:37:35 1.59e18 159236… "#WATCH | US … FALSE                  114
- 7 2022-11-14 21:37:22 1.59e18 159236… "RT @ZeeNews:… FALSE                  109
- 8 2022-11-14 21:37:20 1.59e18 159236… "RT @TV9Bhara… FALSE                  140
- 9 2022-11-14 21:37:04 1.59e18 159236… "RT @GordonGC… FALSE                  140
-10 2022-11-14 21:36:06 1.59e18 159236… "G-20 सम्मेलन में… FALSE                  191
-# … with 290 more rows, and 37 more variables: entities &lt;list&gt;,
-#   metadata &lt;list&gt;, source &lt;chr&gt;, in_reply_to_status_id &lt;dbl&gt;,
-#   in_reply_to_status_id_str &lt;chr&gt;, in_reply_to_user_id &lt;dbl&gt;,
-#   in_reply_to_user_id_str &lt;chr&gt;, in_reply_to_screen_name &lt;chr&gt;, geo &lt;list&gt;,
-#   coordinates &lt;list&gt;, place &lt;list&gt;, contributors &lt;lgl&gt;,
-#   is_quote_status &lt;lgl&gt;, retweet_count &lt;int&gt;, favorite_count &lt;int&gt;,
-#   favorited &lt;lgl&gt;, retweeted &lt;lgl&gt;, lang &lt;chr&gt;, quoted_status_id &lt;dbl&gt;, …</code></pre>
+<pre><code>[1] NA</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(biden_rt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis of Joe Biden tweets</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>jbt_twt <span class="ot">=</span> jbt<span class="sc">$</span>text</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>jbt_toks <span class="ot">=</span> <span class="fu">tokens</span>(jbt_twt)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>jbttwtdfm <span class="ot">&lt;-</span> <span class="fu">dfm</span>(jbt_toks)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># JBT Latent Semantic Analysis</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>jbt_sum_lsa <span class="ot">&lt;-</span> <span class="fu">textmodel_lsa</span>(jbttwtdfm)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(jbt_sum_lsa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 300
-Columns: 43
-$ created_at                    &lt;dttm&gt; 2022-11-14 07:04:35, 2022-11-14 15:46:2…
-$ id                            &lt;dbl&gt; 1.592141e+18, 1.592273e+18, 1.592105e+18…
-$ id_str                        &lt;chr&gt; "1592141444458110979", "1592272752047980…
-$ full_text                     &lt;chr&gt; "“esteem in which Australia is now held.…
-$ truncated                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-$ display_text_range            &lt;dbl&gt; 274, 46, 245, 232, 261, 114, 109, 140, 1…
-$ entities                      &lt;list&gt; [[&lt;data.frame[2 x 2]&gt;], [&lt;data.frame[1 …
-$ metadata                      &lt;list&gt; [&lt;data.frame[1 x 2]&gt;], [&lt;data.frame[1 x…
-$ source                        &lt;chr&gt; "&lt;a href=\"http://twitter.com/download/i…
-$ in_reply_to_status_id         &lt;dbl&gt; 1.592141e+18, NA, NA, NA, NA, NA, NA, NA…
-$ in_reply_to_status_id_str     &lt;chr&gt; "1592140720831614977", NA, NA, NA, NA, N…
-$ in_reply_to_user_id           &lt;dbl&gt; 18965916, NA, NA, NA, NA, NA, NA, NA, NA…
-$ in_reply_to_user_id_str       &lt;chr&gt; "18965916", NA, NA, NA, NA, NA, NA, NA, …
-$ in_reply_to_screen_name       &lt;chr&gt; "hughriminton", NA, NA, NA, NA, NA, NA, …
-$ geo                           &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-$ coordinates                   &lt;list&gt; [&lt;data.frame[1 x 3]&gt;], [&lt;data.frame[1 x…
-$ place                         &lt;list&gt; [&lt;data.frame[1 x 3]&gt;], [&lt;data.frame[1 x…
-$ contributors                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ is_quote_status               &lt;lgl&gt; FALSE, TRUE, FALSE, FALSE, FALSE, FALSE,…
-$ retweet_count                 &lt;int&gt; 82, 80, 49, 0, 0, 0, 25, 2, 852, 0, 1, 2…
-$ favorite_count                &lt;int&gt; 601, 169, 199, 0, 0, 0, 0, 0, 0, 2, 0, 0…
-$ favorited                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-$ retweeted                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-$ lang                          &lt;chr&gt; "en", "en", "en", "hi", "hi", "en", "hi"…
-$ quoted_status_id              &lt;dbl&gt; NA, 1.591625e+18, NA, NA, NA, NA, NA, NA…
-$ quoted_status_id_str          &lt;chr&gt; NA, "1591625254044041224", NA, NA, NA, N…
-$ quoted_status                 &lt;list&gt; [&lt;data.frame[1 x 27]&gt;], [&lt;data.frame[1 …
-$ possibly_sensitive            &lt;lgl&gt; NA, FALSE, FALSE, FALSE, FALSE, FALSE, F…
-$ retweeted_status              &lt;list&gt; [&lt;data.frame[1 x 30]&gt;], [&lt;data.frame[1 …
-$ text                          &lt;chr&gt; "“esteem in which Australia is now held.…
-$ favorited_by                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ scopes                        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ display_text_width            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ quoted_status_permalink       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ quote_count                   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ timestamp_ms                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ reply_count                   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ filter_level                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ query                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ withheld_scope                &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ withheld_copyright            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ withheld_in_countries         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ possibly_sensitive_appealable &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
+<pre><code>                Length  Class     Mode   
+sk                   10 -none-    numeric
+docs               4970 -none-    numeric
+features          22380 -none-    numeric
+matrix_low_rank 1112286 -none-    numeric
+data            1112286 dgCMatrix S4     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>jbt_tweet_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(jbt_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(jbt_tweet_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 6 documents, 2,222 features (98.64% sparse) and 0 docvars.
+       features
+docs    today as india begins its g-20 presidency penned a few
+  text1     1  1     1      1   1    1          1      1 1   1
+  text2     0  0     0      0   0    0          0      0 0   0
+  text3     0  0     0      0   0    0          0      0 1   0
+  text4     0  0     0      0   0    0          0      0 1   0
+  text5     0  0     0      0   0    0          0      0 0   0
+  text6     0  0     0      0   0    0          0      0 3   0
+[ reached max_nfeat ... 2,212 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>jbt_tag_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(jbt_tweet_dfm, <span class="at">pattern =</span> <span class="st">"#*"</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>jbt_toptag <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(jbt_tag_dfm, <span class="dv">50</span>))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(jbt_toptag, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "#abiyahmed"          "#joebiden"           "#eritre"            
+ [4] "#tigray"             "#tigrayans"          "#igf2022"           
+ [7] "#union"              "#eri"                "#eeuu"              
+[10] "#2yrstigraygenocide"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## search for 500 tweets of "PLA Taiwan" in English</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>PLA <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="at">q =</span> <span class="st">"PLA Taiwan"</span>, <span class="at">n =</span> <span class="dv">500</span>, <span class="at">lang =</span> <span class="st">"en"</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis of tweets</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>PLA_twt <span class="ot">=</span> PLA<span class="sc">$</span>text</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>PLA_toks <span class="ot">=</span> <span class="fu">tokens</span>(PLA_twt)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>PLAtwtdfm <span class="ot">&lt;-</span> <span class="fu">dfm</span>(PLA_toks)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Latent Semantic Analysis</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>PLA_sum_lsa <span class="ot">&lt;-</span> <span class="fu">textmodel_lsa</span>(PLAtwtdfm)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PLA_sum_lsa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                Length Class     Mode   
+sk                  10 -none-    numeric
+docs              5000 -none-    numeric
+features         13920 -none-    numeric
+matrix_low_rank 696000 -none-    numeric
+data            696000 dgCMatrix S4     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>PLA_tweet_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(PLA_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(PLA_tweet_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 6 documents, 1,374 features (97.87% sparse) and 0 docvars.
+       features
+docs    5 pla aircraft and 3 plan vessels around taiwan were
+  text1 1   1        2   3 1    1       2      1      1    1
+  text2 0   0        0   0 0    0       0      0      1    0
+  text3 0   1        0   2 0    0       0      0      1    0
+  text4 0   0        0   0 0    0       0      0      1    0
+  text5 0   1        0   1 0    0       0      0      1    0
+  text6 0   1        0   2 0    0       0      0      1    0
+[ reached max_nfeat ... 1,364 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>PLA_tag_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(PLA_tweet_dfm, <span class="at">pattern =</span> <span class="st">"#*"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>PLA_toptag <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(PLA_tag_dfm, <span class="dv">50</span>))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(PLA_toptag, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "#pla"        "#taiwan"     "#china"      "#chinese"    "#jiangzemin"
+ [6] "#defense"    "#taiwa"      "#chinapower" "#bynong"     "#beef"      </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## search for 500 tweets of "BLM" in English</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>BLM <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="at">q =</span> <span class="st">"Black Lives Matter"</span>, <span class="at">n =</span> <span class="dv">500</span>, <span class="at">lang =</span> <span class="st">"en"</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis of tweets</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>BLM_twt <span class="ot">=</span> BLM<span class="sc">$</span>text</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>BLM_toks <span class="ot">=</span> <span class="fu">tokens</span>(BLM_twt)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>BLMtwtdfm <span class="ot">&lt;-</span> <span class="fu">dfm</span>(BLM_toks)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Latent Semantic Analysis</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>BLM_sum_lsa <span class="ot">&lt;-</span> <span class="fu">textmodel_lsa</span>(BLMtwtdfm)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(BLM_sum_lsa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                Length  Class     Mode   
+sk                   10 -none-    numeric
+docs               4890 -none-    numeric
+features          26300 -none-    numeric
+matrix_low_rank 1286070 -none-    numeric
+data            1286070 dgCMatrix S4     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>BLM_tweet_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(BLM_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BLM_tweet_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 6 documents, 2,610 features (98.91% sparse) and 0 docvars.
+       features
+docs    if you're a gop politician constantly whining about china but
+  text1  1      3 2   1          1          1       1     1     1   1
+  text2  0      0 0   0          0          0       0     0     0   1
+  text3  0      0 0   0          0          0       0     2     0   0
+  text4  0      0 0   0          0          0       0     0     0   1
+  text5  0      0 1   0          0          0       0     0     0   0
+  text6  0      0 0   0          0          0       0     0     0   0
+[ reached max_nfeat ... 2,600 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>BLM_tag_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(BLM_tweet_dfm, <span class="at">pattern =</span> <span class="st">"#*"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>BLM_toptag <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(BLM_tag_dfm, <span class="dv">50</span>))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BLM_toptag, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "#kanyewest"      "#blacked"        "#bbc"            "#saynotowhit"   
+ [5] "#tigraytaughtme" "#bi"             "#gaylove"        "#gaymen"        
+ [9] "#gaylife"        "#follow"        </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">## search for 500 tweets of "COVID" in English</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>COVID <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="at">q =</span> <span class="st">"COVID"</span>, <span class="at">n =</span> <span class="dv">500</span>, <span class="at">lang =</span> <span class="st">"en"</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># analysis of tweets</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>COVID_twt <span class="ot">=</span> COVID<span class="sc">$</span>text</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>COVID_toks <span class="ot">=</span> <span class="fu">tokens</span>(COVID_twt)</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>COVIDtwtdfm <span class="ot">&lt;-</span> <span class="fu">dfm</span>(COVID_toks)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Latent Semantic Analysis</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>COVID_sum_lsa <span class="ot">&lt;-</span> <span class="fu">textmodel_lsa</span>(COVIDtwtdfm)</span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(COVID_sum_lsa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                Length  Class     Mode   
+sk                   10 -none-    numeric
+docs               4740 -none-    numeric
+features          29710 -none-    numeric
+matrix_low_rank 1408254 -none-    numeric
+data            1408254 dgCMatrix S4     </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>COVID_tweet_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(COVID_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(COVID_tweet_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Document-feature matrix of: 6 documents, 2,951 features (99.24% sparse) and 0 docvars.
+       features
+docs    breaking report depositions reveal dr fauci couldn't name any studies
+  text1        1      1           1      1  1     1        1    1   1       1
+  text2        0      0           0      0  0     0        0    0   0       0
+  text3        0      0           0      0  0     0        0    0   0       0
+  text4        0      0           0      0  0     0        0    0   0       0
+  text5        0      0           0      0  0     0        0    0   0       0
+  text6        0      0           0      0  0     0        0    0   0       0
+[ reached max_nfeat ... 2,941 more features ]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>COVID_tag_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(COVID_tweet_dfm, <span class="at">pattern =</span> <span class="st">"#*"</span>)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>COVID_toptag <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(COVID_tag_dfm, <span class="dv">50</span>))</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(COVID_toptag, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "#covid"              "#pfizer"             "#covid19"           
+ [4] "#breaking"           "#china"              "#twitter"           
+ [7] "#musk"               "#zombievirus"        "#vaccine"           
+[10] "#vaccinesideeffects"</code></pre>
 </div>
 </div>
 
