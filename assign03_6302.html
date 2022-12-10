@@ -148,9 +148,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li class="nav-item">
     <a class="nav-link" href="./about.html">About</a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./project.html">Project</a>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-final-projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">Final Projects</a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-final-projects">    
+        <li>
+    <a class="dropdown-item" href="./EPPS6356_Final.pdf">
+ <span class="dropdown-text">EPPS6356 Final</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./EPPS6302_Final.pdf">
+ <span class="dropdown-text">EPPS6302 Final</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./POV_Code.pdf">
+ <span class="dropdown-text">Final Projects Code</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://haleypuddy.github.io/pov_dash2.html">
+ <span class="dropdown-text">Final Project Storyboard</span></a>
+  </li>  
+    </ul>
+  </li>
   <li class="nav-item">
     <a class="nav-link" href="./cv.pdf">CV</a>
   </li>  
@@ -358,12 +376,12 @@ Reading auth from '/Users/sami_manuel/Library/Preferences/org.R-project.R/R/rtwe
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#i. Most likes</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt<span class="sc">$</span>favorite_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 20251</code></pre>
+<pre><code>[1] 64731</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ii. Most Retweets</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt<span class="sc">$</span>retweet_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 4993</code></pre>
+<pre><code>[1] 18092</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ii. Most Replies</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(jbt<span class="sc">$</span>reply_count)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -381,34 +399,43 @@ Reading auth from '/Users/sami_manuel/Library/Preferences/org.R-project.R/R/rtwe
 <div class="cell-output cell-output-stdout">
 <pre><code>                Length  Class     Mode   
 sk                   10 -none-    numeric
-docs               4910 -none-    numeric
-features          22800 -none-    numeric
-matrix_low_rank 1119480 -none-    numeric
-data            1119480 dgCMatrix S4     </code></pre>
+docs               4890 -none-    numeric
+features          22310 -none-    numeric
+matrix_low_rank 1090959 -none-    numeric
+data            1090959 dgCMatrix S4     </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>jbt_tweet_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(jbt_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(jbt_tweet_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Document-feature matrix of: 6 documents, 2,264 features (98.71% sparse) and 0 docvars.
+<pre><code>Document-feature matrix of: 6 documents, 2,212 features (98.77% sparse) and 0 docvars.
        features
-docs    today as india begins its g-20 presidency penned a few
-  text1     1  1     1      1   1    1          1      1 1   1
-  text2     0  0     0      0   0    0          0      0 1   0
-  text3     0  0     0      0   0    0          0      0 0   0
-  text4     0  0     0      0   0    0          0      0 0   0
-  text5     0  0     0      0   0    0          0      0 1   0
-  text6     0  0     0      0   0    0          0      0 0   0
-[ reached max_nfeat ... 2,254 more features ]</code></pre>
+docs    @joebiden we're waiting for your response to execution of
+  text1         1     1       1   1    1        1  2         2  1
+  text2         0     0       0   1    0        0  0         0  0
+  text3         1     0       0   2    0        0  0         0  0
+  text4         1     0       0   0    0        0  1         0  0
+  text5         1     0       0   0    0        0  0         0  1
+  text6         1     0       0   0    0        0  3         0  1
+       features
+docs    #mohsenshekari
+  text1              1
+  text2              0
+  text3              0
+  text4              0
+  text5              0
+  text6              0
+[ reached max_nfeat ... 2,202 more features ]</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>jbt_tag_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(jbt_tweet_dfm, <span class="at">pattern =</span> <span class="st">"#*"</span>)</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>jbt_toptag <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(jbt_tag_dfm, <span class="dv">50</span>))</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(jbt_toptag, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "#abiyahmed"          "#joebiden"           "#eritre"            
- [4] "#tigray"             "#eri"                "#2yrstigraygenocide"
- [7] "#eritreaoutoftigray" "#biden"              "#g20india"          
-[10] "#hitler"            </code></pre>
+<pre><code> [1] "#7️⃣6️⃣5️⃣daysoftigraygenocide" "#766daysoftigraygenocide"
+ [3] "#joebiden"                "#tigraygenocide"         
+ [5] "#tigrayan"                "#brittneygriner"         
+ [7] "#paulwhelan"              "#viktorbout"             
+ [9] "#bnnus"                   "#genocidepreventionday"  </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">## search for 500 tweets of "PLA Taiwan" in English</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>PLA <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="at">q =</span> <span class="st">"PLA Taiwan"</span>, <span class="at">n =</span> <span class="dv">500</span>, <span class="at">lang =</span> <span class="st">"en"</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
@@ -425,31 +452,34 @@ docs    today as india begins its g-20 presidency penned a few
 <pre><code>                Length Class     Mode   
 sk                  10 -none-    numeric
 docs              5000 -none-    numeric
-features         13920 -none-    numeric
-matrix_low_rank 696000 -none-    numeric
-data            696000 dgCMatrix S4     </code></pre>
+features         10080 -none-    numeric
+matrix_low_rank 504000 -none-    numeric
+data            504000 dgCMatrix S4     </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>PLA_tweet_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(PLA_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(PLA_tweet_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Document-feature matrix of: 6 documents, 1,374 features (97.87% sparse) and 0 docvars.
+<pre><code>Document-feature matrix of: 6 documents, 992 features (97.08% sparse) and 0 docvars.
        features
-docs    5 pla aircraft and 3 plan vessels around taiwan were
-  text1 1   1        2   3 1    1       2      1      1    1
-  text2 0   0        0   0 0    0       0      0      1    0
-  text3 0   1        0   2 0    0       0      0      1    0
-  text4 0   0        0   0 0    0       0      0      1    0
-  text5 0   1        0   1 0    0       0      0      1    0
-  text6 0   1        0   2 0    0       0      0      1    0
-[ reached max_nfeat ... 1,364 more features ]</code></pre>
+docs    24 pla aircraft and 4 plan vessels around taiwan were
+  text1  1   1        2   3 1    1       2      1      1    1
+  text2  0   1        1   2 0    0       0      0      1    0
+  text3  0   1        1   1 1    1       1      1      1    1
+  text4  0   1        1   1 1    1       1      1      1    1
+  text5  0   1        1   1 1    1       1      1      1    1
+  text6  0   1        1   1 1    1       1      1      1    1
+[ reached max_nfeat ... 982 more features ]</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>PLA_tag_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(PLA_tweet_dfm, <span class="at">pattern =</span> <span class="st">"#*"</span>)</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>PLA_toptag <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(PLA_tag_dfm, <span class="dv">50</span>))</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(PLA_toptag, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "#pla"        "#taiwan"     "#china"      "#chinese"    "#jiangzemin"
- [6] "#defense"    "#taiwa"      "#chinapower" "#bynong"     "#beef"      </code></pre>
+<pre><code> [1] "#pla"                    "#taiwan"                
+ [3] "#ccp"                    "#china"                 
+ [5] "#taiwanstraitmedianline" "#ai"                    
+ [7] "#ml"                     "#artificialintelligence"
+ [9] "#machinelearning"        "#datascience"           </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## search for 500 tweets of "BLM" in English</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>BLM <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="at">q =</span> <span class="st">"Black Lives Matter"</span>, <span class="at">n =</span> <span class="dv">500</span>, <span class="at">lang =</span> <span class="st">"en"</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
@@ -465,33 +495,34 @@ docs    5 pla aircraft and 3 plan vessels around taiwan were
 <div class="cell-output cell-output-stdout">
 <pre><code>                Length  Class     Mode   
 sk                   10 -none-    numeric
-docs               4890 -none-    numeric
-features          25310 -none-    numeric
-matrix_low_rank 1237659 -none-    numeric
-data            1237659 dgCMatrix S4     </code></pre>
+docs               4390 -none-    numeric
+features          23840 -none-    numeric
+matrix_low_rank 1046576 -none-    numeric
+data            1046576 dgCMatrix S4     </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>BLM_tweet_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(BLM_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BLM_tweet_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Document-feature matrix of: 6 documents, 2,511 features (98.88% sparse) and 0 docvars.
+<pre><code>Document-feature matrix of: 6 documents, 2,366 features (98.79% sparse) and 0 docvars.
        features
-docs    if you're a gop politician constantly whining about china but
-  text1  1      3 2   1          1          1       1     1     1   1
-  text2  0      0 0   0          0          0       0     0     0   1
-  text3  0      0 0   0          0          0       0     2     0   0
-  text4  0      0 0   0          0          0       0     1     0   1
-  text5  0      0 0   0          0          0       0     1     0   1
-  text6  0      0 1   0          0          0       0     0     0   0
-[ reached max_nfeat ... 2,501 more features ]</code></pre>
+docs    the major problem with israel is young generation of black
+  text1   5     1       1    2      2  1     1          1  2     3
+  text2   2     0       0    0      1  1     1          0  1     4
+  text3   0     0       0    0      0  0     0          0  1     1
+  text4   0     0       0    0      0  0     0          0  0     1
+  text5   1     0       0    0      0  1     0          0  2     1
+  text6   0     0       0    0      0  0     0          0  1     2
+[ reached max_nfeat ... 2,356 more features ]</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>BLM_tag_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(BLM_tweet_dfm, <span class="at">pattern =</span> <span class="st">"#*"</span>)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>BLM_toptag <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(BLM_tag_dfm, <span class="dv">50</span>))</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(BLM_toptag, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "#kanyewest"      "#blacked"        "#bbc"            "#saynotowhit"   
- [5] "#tigraytaughtme" "#bi"             "#gaylove"        "#gaymen"        
- [9] "#gaylife"        "#follow"        </code></pre>
+<pre><code> [1] "#blacklivesmatter"      "#blm"                   "#brittneygriner"       
+ [4] "#imagainstantisemitism" "#bnwo"                  "#nowplaying"           
+ [7] "#dailyapology"          "#visitourhomeofhope"    "#saytheirnames"        
+[10] "#exposed"              </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">## search for 500 tweets of "COVID" in English</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>COVID <span class="ot">&lt;-</span> rtweet<span class="sc">::</span><span class="fu">search_tweets</span>(<span class="at">q =</span> <span class="st">"COVID"</span>, <span class="at">n =</span> <span class="dv">500</span>, <span class="at">lang =</span> <span class="st">"en"</span>, <span class="at">retryonratelimit =</span> <span class="cn">TRUE</span>)</span>
@@ -507,32 +538,34 @@ docs    if you're a gop politician constantly whining about china but
 <div class="cell-output cell-output-stdout">
 <pre><code>                Length  Class     Mode   
 sk                   10 -none-    numeric
-docs               4740 -none-    numeric
-features          29560 -none-    numeric
-matrix_low_rank 1401144 -none-    numeric
-data            1401144 dgCMatrix S4     </code></pre>
+docs               4940 -none-    numeric
+features          31910 -none-    numeric
+matrix_low_rank 1576354 -none-    numeric
+data            1576354 dgCMatrix S4     </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>COVID_tweet_dfm <span class="ot">&lt;-</span> <span class="fu">tokens</span>(COVID_twt, <span class="at">remove_punct =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dfm</span>()</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(COVID_tweet_dfm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Document-feature matrix of: 6 documents, 2,936 features (99.10% sparse) and 0 docvars.
+<pre><code>Document-feature matrix of: 6 documents, 3,173 features (99.31% sparse) and 0 docvars.
        features
-docs    breaking report depositions reveal dr fauci couldn't name any studies
-  text1        1      1           1      1  1     1        1    1   1       1
-  text2        0      0           0      0  0     0        0    0   0       0
-  text3        0      0           0      0  0     0        0    0   0       0
-  text4        0      0           0      0  0     0        0    0   0       0
-  text5        0      0           0      1  0     0        0    0   0       0
-  text6        0      0           0      0  0     0        0    0   0       0
-[ reached max_nfeat ... 2,926 more features ]</code></pre>
+docs    3 take for example stanford's dr jay bhattacharya @drjbhattacharya who
+  text1 1    1   1       1          1  1   1            1                1   1
+  text2 0    0   0       0          0  0   0            0                0   1
+  text3 0    0   1       0          0  0   0            0                0   0
+  text4 0    0   0       0          0  0   0            0                0   0
+  text5 0    0   1       0          0  0   0            0                0   0
+  text6 0    0   0       0          0  0   0            0                0   0
+[ reached max_nfeat ... 3,163 more features ]</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>COVID_tag_dfm <span class="ot">&lt;-</span> <span class="fu">dfm_select</span>(COVID_tweet_dfm, <span class="at">pattern =</span> <span class="st">"#*"</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>COVID_toptag <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">topfeatures</span>(COVID_tag_dfm, <span class="dv">50</span>))</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(COVID_toptag, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "#covid"       "#breaking"    "#pfizer"      "#china"       "#covid19"    
- [6] "#lanzhou"     "#gansu"       "#ccpchina"    "#zombievirus" "#vaccine"    </code></pre>
+<pre><code> [1] "#covid"            "#covid19"          "#diedsuddenly"    
+ [4] "#mecfs"            "#longcovid"        "#039"             
+ [7] "#corona"           "#nationalsecurity" "#shippingplatform"
+[10] "#flu"             </code></pre>
 </div>
 </div>
 

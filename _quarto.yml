@@ -9,8 +9,16 @@ website:
         text: Home
       - href: about.qmd
         text: About
-      - href: project.qmd
-        text: Project
+      - text: Final Projects
+        menu:
+          - href: EPPS6356_Final.pdf
+            text: EPPS6356 Final
+          - href: EPPS6302_Final.pdf
+            text: EPPS6302 Final
+          - href: POV_Code.pdf
+            text: Final Project Code
+          - href: "https://haleypuddy.github.io/pov_dash2.html"
+            text: Final Project Storyboard
       - href: cv.pdf
         text: CV
       - href: "https://samantha-manuel.github.io/samantha-manuel.github.io-blog/"
